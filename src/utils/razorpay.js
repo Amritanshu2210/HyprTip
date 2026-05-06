@@ -82,9 +82,7 @@ export async function openRazorpayCheckout({ amount, name, currency, message, on
             verifiedOnClientAt: new Date().toISOString(),
           },
         });
-        alert(
-          `Payment Verified!\n\nName: ${name}\nAmount: ${currency} ${amount}\n\nPayment ID: ${response.razorpay_payment_id}`
-        );
+        alert(`✅ Payment Successful! Thank you ${name} for your support ❤️`);
         onSuccess?.();
       } catch (error) {
         alert(error.message || "Payment verification failed.");
