@@ -1,3 +1,5 @@
+const API_URL = import.meta.env.VITE_API_URL;
+
 async function readJsonSafely(response) {
   const text = await response.text();
   if (!text) {
@@ -12,7 +14,7 @@ async function readJsonSafely(response) {
 }
 
 async function createOrder({ amount, currency, name, message }) {
-  const response = await fetch("/api/payment/orders", {
+  const response = await fetch(`${API_URL}/api/payment/orders`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -34,7 +36,7 @@ async function createOrder({ amount, currency, name, message }) {
 }
 
 async function verifyPayment(payload) {
-  const response = await fetch("/api/payment/verify", {
+  const response = await fetch(`${API_URL}/api/payment/verify`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

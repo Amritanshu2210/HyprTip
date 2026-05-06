@@ -68,19 +68,43 @@ app.get("/api/health", (_req, res) => {
 });
 
 app.post("/api/admin/login", (req, res) => {
-  const username = String(req.body?.username || "");
-  const password = String(req.body?.password || "");
+
+  const username = String(req.body?.username || "").trim();
+
+  const password = String(req.body?.password || "").trim();
+
+  console.log("Login attempt:");
+
+  console.log("Entered Username:", username);
+
+  console.log("Entered Password:", password);
+
+  console.log("ENV Username:", ADMIN_USERNAME);
+
+  console.log("ENV Password:", ADMIN_PASSWORD);
 
   if (
-    username !== ADMIN_USERNAME ||
-    password !== ADMIN_PASSWORD
+
+    username !== String(ADMIN_USERNAME).trim() ||
+
+    password !== String(ADMIN_PASSWORD).trim()
+
   ) {
+
     return res.status(401).json({
+
       error: "Invalid username or password",
+
     });
+
   }
 
-  return res.json({ token: signAdminToken() });
+  return res.json({
+
+    token: signAdminToken(),
+
+  });
+
 });
 
 app.get(
@@ -273,6 +297,6 @@ app.post("/api/payment/verify", async (req, res) => {
 
 app.listen(PORT, () => {
   console.log(
-    `Server listening on http://localhost:${PORT}`
+    `Server listening on port ${PORT}`
   );
 });
