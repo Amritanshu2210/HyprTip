@@ -68,43 +68,21 @@ app.get("/api/health", (_req, res) => {
 });
 
 app.post("/api/admin/login", (req, res) => {
-
   const username = String(req.body?.username || "").trim();
-
   const password = String(req.body?.password || "").trim();
 
-  console.log("Login attempt:");
-
-  console.log("Entered Username:", username);
-
-  console.log("Entered Password:", password);
-
-  console.log("ENV Username:", ADMIN_USERNAME);
-
-  console.log("ENV Password:", ADMIN_PASSWORD);
-
   if (
-
     username !== String(ADMIN_USERNAME).trim() ||
-
     password !== String(ADMIN_PASSWORD).trim()
-
   ) {
-
     return res.status(401).json({
-
       error: "Invalid username or password",
-
     });
-
   }
 
   return res.json({
-
     token: signAdminToken(),
-
   });
-
 });
 
 app.get(

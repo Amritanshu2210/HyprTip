@@ -1,7 +1,10 @@
+const API_URL = import.meta.env.VITE_API_URL;
+
 const ADMIN_TOKEN_KEY = "hyprtip_admin_token";
 
 async function readJsonSafely(response) {
   const text = await response.text();
+
   if (!text) {
     return {};
   }
@@ -26,27 +29,46 @@ export function clearAdminToken() {
 }
 
 export async function loginAdmin({ username, password }) {
-  const response = await fetch("/api/admin/login", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ username, password }),
-  });
+  const response = await fetch(
+    `${API_URL}/api/admin/login`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        username,
+        password,
+      }),
+    }
+  );
+
   const data = await readJsonSafely(response);
+
   if (!response.ok) {
     throw new Error(data.error || "Login failed");
   }
+
   return data;
 }
 
 export async function fetchAdminPayments(token) {
-  const response = await fetch("/api/admin/payments", {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
+  const response = await fetch(
+    `${API_URL}/api/admin/payments`,
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  );
+
   const data = await readJsonSafely(response);
+
   if (!response.ok) {
-    throw new Error(data.error || "Could not fetch admin payments");
+    throw new Error(
+      data.error || "Could not fetch admin payments"
+    );
   }
+
   return data;
 }
