@@ -242,4 +242,3 @@ function TermsAndConditionsPage() {
 }
 
 export default TermsAndConditionsPage;
-```
