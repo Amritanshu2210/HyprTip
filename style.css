@@ -10,20 +10,51 @@
   font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
 }
 
-*{box-sizing:border-box}
-html,body{
+*{
+  box-sizing:border-box;
+}
+
+html,
+body{
   height:100%;
   overflow-x:hidden;
-  overflow-y:auto;
 }
+
 body{
   margin:0;
-  background:
-    radial-gradient(transparent 15%, rgba(255, 255, 255, 0.02) 16%) 0 0/34px 34px,
-    linear-gradient(180deg,#070707 0%, #121212 100%);
+
+  background-color:#050505;
+
+  background-image:
+    radial-gradient(
+      rgba(255,255,255,0.08) 1px,
+      transparent 1px
+    ),
+    radial-gradient(
+      rgba(0,140,255,0.06) 2px,
+      transparent 2px
+    ),
+    linear-gradient(
+      180deg,
+      #050505 0%,
+      #0d0d0d 100%
+    );
+
+  background-size:
+    32px 32px,
+    120px 120px,
+    100% 100%;
+
+  background-position:
+    0 0,
+    center,
+    center;
+
   color:#e9e9e9;
+
   -webkit-font-smoothing:antialiased;
   -moz-osx-font-smoothing:grayscale;
+
   display:flex;
   flex-direction:column;
   align-items:center;
@@ -39,12 +70,12 @@ body{
 
 .home-page .container{
   flex:1;
-  overflow:hidden;
+  overflow:auto;
 }
 
 .topbar{
   width:100%;
-  padding:26px 0;
+  padding:12px 0 0;
   display:flex;
   justify-content:center;
 }
@@ -76,20 +107,113 @@ body{
 
 .container{
   width:100%;
-  max-width:720px;
+  max-width:700px;
   margin-top:0;
-  padding:50px;
+  padding:0px;
   display:flex;
   justify-content:center;
 }
 
 .card{
   width:100%;
+  max-width:420px;
   background:black;
   border-radius:20px;
-  padding:18px 18px 8px;
+  padding:18px;
   box-shadow:var(--shadow);
   border:1px solid rgba(255,255,255,0.03);
+}
+
+.home-card{
+  max-width:420px;
+}
+
+.legal-container{
+  margin-top:0;
+  padding:18px 20px;
+}
+
+.legal-card{
+  max-width:760px;
+  padding:26px 28px;
+}
+
+.legal-title{
+  margin:0 0 14px;
+  text-align:center;
+  font-size:22px;
+  font-weight:800;
+  color:#fff;
+  letter-spacing:0.2px;
+}
+
+.legal-strong{
+  text-align:center;
+  font-weight:800;
+  font-size:13px;
+  margin:10px 0 14px;
+  color:#f0f0f0;
+}
+
+.legal-p{
+  margin:10px 0;
+  font-size:12px;
+  line-height:1.45;
+  color:#e6e6e6;
+}
+
+.legal-section-title{
+  margin:18px 0 8px;
+  font-size:13px;
+  font-weight:800;
+  color:#ffffff;
+}
+
+.legal-section-title--tight{
+  margin-top:0;
+}
+
+.legal-ul{
+  margin:8px 0 14px 18px;
+  padding:0;
+  color:#e6e6e6;
+  font-size:12px;
+  line-height:1.45;
+}
+
+.legal-link{
+  color:#9fcbff;
+  text-decoration:none;
+}
+
+.legal-link:hover{
+  text-decoration:underline;
+}
+
+.legal-ack{
+  margin-top:14px;
+  background:rgba(255,255,255,0.02);
+  border:1px solid rgba(255,255,255,0.03);
+  border-radius:12px;
+  padding:10px 12px;
+  font-size:11px;
+  line-height:1.35;
+  color:var(--muted);
+  display:flex;
+  gap:10px;
+  align-items:flex-start;
+  cursor:pointer;
+}
+
+.legal-ack-checkbox{
+  margin-top:2px;
+  width:14px;
+  height:14px;
+  accent-color: var(--accent);
+}
+
+.legal-ack-text{
+  flex:1;
 }
 
 .banner{
@@ -97,47 +221,62 @@ body{
   border-radius:14px;
   overflow:hidden;
   background:#2a2a2a;
-  padding:0;
+  padding:8px;
   text-align:center;
 }
 
-.banner-image-container{
-  position:relative;
+.banner-img{
+    
   width:100%;
   height:160px;
-}
-
-.banner-img{
-  width:100%;
-  height:100%;
   object-fit:cover;
   display:block;
+  margin:0 auto;
   filter:brightness(1);
-  border-radius:14px;
+  border-radius:10px;
+  
+}
+
+.avatar-wrap{
+  position:absolute;
+  left:50%;
+  top:50%;
+  transform:translate(-50%, -50%);
+  width:100px;
+  height:100px;
+  border-radius:50%;
+  background:linear-gradient(
+    180deg,
+    rgba(0,0,0,0.6),
+    rgba(0,0,0,0.3)
+  );
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border:6px solid rgba(0,0,0,0.6);
+  box-shadow:0 8px 20px rgba(0,0,0,0.7);
+  z-index:10;
+}
+
+.avatar{
+  width:84px;
+  height:84px;
+  object-fit:cover;
+  border-radius:50%;
+  display:block;
 }
 
 .page-title{
-  margin:0;
-  padding:6px 12px;
+  margin-top:64px;
   font-size:14px;
   font-weight:600;
   color:#e8e8e8;
-  background:#000 ;
-  border-radius:8px;
   text-shadow:0 1px 0 rgba(0,0,0,0.7);
-}
-
-.title-overlay{
-  position:absolute;
-  left:50%;
-  bottom:10px;
-  background:transparent;
-  transform:translateX(-50%);
 }
 
 .form{
   margin-top:18px;
-  padding:18px 18px 0px;
+  padding:18px;
   border-radius:12px;
   background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.008));
   border:1px solid rgba(255,255,255,0.02);
@@ -168,7 +307,7 @@ body{
 
 .textarea{min-height:100px; resize:vertical; padding-top:12px}
 
-.charrow{font-size:12px;color:var(--muted);margin-top:8px}
+.charrow{font-size:12px;color:var(--muted);margin-top:8px;text-align:right}
 
 .btn{
   width:100%;
@@ -189,33 +328,49 @@ body{
 .footer{
   margin-top:0;
   width:100%;
+  padding:24px 18px 34px;
+  color:var(--muted);
+  display:flex;
+  justify-content:center;
+  border-top:1px solid rgba(255,255,255,0.02);
+}
+
+.footer-cta{
+  width:100%;
   max-width:720px;
   display:flex;
   flex-direction:column;
-  gap:8px;
-  justify-content:center;
   align-items:center;
-  padding:18px 24px;
-  color:var(--muted);
-  border-top:1px solid rgba(255,255,255,0.02);
+  gap:10px;
   text-align:center;
 }
 
-.footer-links{
-  display:flex;
+.footer-cta-title{
+  font-size:13px;
+  font-weight:700;
+  color:#d8d8d8;
+}
+
+.footer-cta-btn{
+  display:inline-flex;
   align-items:center;
-  gap:12px;
-  flex-wrap:wrap;
   justify-content:center;
-}
-
-.footer-link{
-  color:#9fcbff;
+  padding:8px 18px;
+  border-radius:999px;
+  background:linear-gradient(180deg, #4aa3ff, #357fd6);
+  color:white;
+  font-weight:700;
   text-decoration:none;
+  box-shadow:0 8px 18px rgba(58,122,210,0.18);
+  border:1px solid rgba(255,255,255,0.10);
 }
 
-.footer-link:hover{
-  text-decoration:underline;
+.footer-cta-btn:hover{
+  filter:brightness(1.05);
+}
+
+.footer-cta-sub{
+  font-size:12px;
 }
 
 .admin-link{
@@ -316,9 +471,10 @@ body{
 }
 
 /* Responsive tweaks */
-@media (max-width:740px){
+@media (max-width:540px){
   .container{padding:12px}
-  .banner-image-container{height:120px}
+  .banner-img{height:120px}
+  .avatar-wrap{top:70px;width:86px;height:86px}
   .admin-stats{grid-template-columns:1fr}
   .topbar-inner{padding:0 12px}
   .topbar .logo{font-size:28px}

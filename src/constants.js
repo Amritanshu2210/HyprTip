@@ -1,5 +1,6 @@
-export const MAX_CHARS = 150;
+export const MAX_CHARS = 200;
 
+export const CREATOR_NAME = "Your Favourite Streamer";
 export const DEFAULT_FORM_STATE = {
   amount: 100,
   name: "Anonymous",

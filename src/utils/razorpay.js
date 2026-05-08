@@ -50,7 +50,14 @@ async function verifyPayment(payload) {
   }
 }
 
-export async function openRazorpayCheckout({ amount, name, currency, message, onSuccess, onFailure }) {
+export async function openRazorpayCheckout({ 
+  amount, 
+  name, 
+  currency,
+  email,
+  message, 
+  onSuccess, 
+  onFailure }) {
   if (!window.Razorpay) {
     alert("Razorpay SDK is not loaded. Please refresh and try again.");
     return false;
@@ -68,8 +75,8 @@ export async function openRazorpayCheckout({ amount, name, currency, message, on
     order_id: order.id,
     amount: order.amount,
     currency,
-    name: "HyprTip - Amritanshu",
-    description: message || "Supertip",
+    name: "HyprTip",
+    description: message || "HyprTip",
     async handler(response) {
       try {
         await verifyPayment({
